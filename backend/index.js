@@ -1,3 +1,4 @@
+const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
@@ -7,7 +8,7 @@ const blogRoutes = require('./routes/blog');
 const testRoutes = require('./routes/test');
 const matchRoutes = require('./routes/match');
 const subscriptionRoutes = require('./routes/subscription');
-const googleAuthRoutes = require('./routes/googleAuth'); // Google OAuth callback route
+const googleAuthRoutes = require('./routes/googleAuth');
 
 const cors = require('cors');
 const helmet = require('helmet');
@@ -21,7 +22,7 @@ mongoose.set('strictQuery', false);
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://gigmatch.io'], // Include production domain as needed
+  origin: ['http://localhost:5173', 'https://gigmatch.io', 'https://www.gigmatch.io', 'https://gigmatch-frontend.vercel.app/', 'https://api.gigmatch.io/'], // Include production domain as needed
   credentials: true,
 }));
 app.use(express.json());
