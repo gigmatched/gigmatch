@@ -11,6 +11,9 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Blog from './pages/Blog';
 import BlogDetail from './pages/BlogDetail';
+import AdminBlogList from './pages/AdminBlogList';
+import CreateBlogPost from './pages/CreateBlogPost';
+import EditBlogPost from './pages/EditBlogPost';
 import OurStory from './pages/OurStory';
 import Contact from './pages/Contact';
 import Gigs from './pages/Gigs';
@@ -37,7 +40,7 @@ function App({ children }) {
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
-                  <Route path="/privacy" element={<Privacy />} /> {/* Added privacy route */}
+                  <Route path="/privacy" element={<Privacy />} />
                   <Route
                     path="/profile"
                     element={
@@ -46,8 +49,36 @@ function App({ children }) {
                       </ProtectedRoute>
                     }
                   />
+                  {/* Public Blog Routes */}
                   <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:id" element={<BlogDetail />} />
+                  <Route path="/blog/:slug" element={<BlogDetail />} />
+                  
+                  {/* Admin Blog Routes */}
+                  <Route
+                    path="/admin/blog"
+                    element={
+                      <ProtectedRoute>
+                        <AdminBlogList />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/blog/create"
+                    element={
+                      <ProtectedRoute>
+                        <CreateBlogPost />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/blog/edit/:id"
+                    element={
+                      <ProtectedRoute>
+                        <EditBlogPost />
+                      </ProtectedRoute>
+                    }
+                  />
+                  
                   <Route path="/ourstory" element={<OurStory />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/gigs" element={<Gigs />} />
@@ -60,7 +91,7 @@ function App({ children }) {
                       </ProtectedRoute>
                     }
                   />
-                  <Route path="/underconstruction" element={<UnderConstruction />} /> {/* add this route */}
+                  <Route path="/underconstruction" element={<UnderConstruction />} />
                   {/* Other routes can be added here */}
                 </Routes>
               </div>

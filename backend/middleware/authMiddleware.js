@@ -1,4 +1,3 @@
-// middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -10,23 +9,24 @@ const protect = async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     try {
-      // Token'ı header'dan al
+      // Extract token from header.
       token = req.headers.authorization.split(' ')[1];
 
-      // Token'ı doğrula
+      // Verify token.
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+      // Retrieve user details and attach it to req.user, omitting password.
       req.user = await User.findById(decoded.userId).select('-password');
-      console.log('Auth Middleware: Token bulundu ve kullanıcı bilgisi alındı:', req.user); // Log ekleyin
+      console.log('Auth Middleware: Token found; user info loaded:', req.user);
 
-      return next(); // Fonksiyonu burada sonlandırmak için return kullanın
+      return next();
     } catch (error) {
-      console.error(error);
-      return res.status(401).json({ message: 'Geçersiz token' }); // return ekleyin
+      console.error('Auth Middleware error:', error);
+      return res.status(401).json({ message: 'Geçersiz token' });
     }
   }
 
-  return res.status(401).json({ message: 'Token bulunamadı' }); // return ekleyin
+  return res.status(401).json({ message: 'Token bulunamadı' });
 };
 
 module.exports = protect;

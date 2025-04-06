@@ -1,62 +1,95 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-navy text-white px-4 py-8">
+      <Helmet>
+        <title>Gizlilik Politikası - Gig Match</title>
+        <meta 
+          name="description" 
+          content="Gig Match’in Gizlilik Politikası, bilgilerinizin nasıl toplandığı, kullanıldığı, paylaşıldığı ve korunduğu hakkında detaylı bilgi sunar." 
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://gigmatch.io/gizlilik" />
+
+        {/* Open Graph tags */}
+        <meta property="og:title" content="Gizlilik Politikası - Gig Match" />
+        <meta 
+          property="og:description" 
+          content="Gig Match’in Gizlilik Politikası, bilgilerinizi nasıl topladığımız, kullandığımız ve koruduğumuz hakkında bilgilendirme sağlar." 
+        />
+        <meta property="og:url" content="https://gigmatch.io/gizlilik" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Gizlilik Politikası - Gig Match" />
+        <meta 
+          name="twitter:description" 
+          content="Gig Match’in Gizlilik Politikası kapsamında bilgilerinizin toplama, kullanım ve paylaşım detaylarını öğrenin." 
+        />
+
+        {/* Optional Keywords */}
+        <meta 
+          name="keywords" 
+          content="Gig Match, gizlilik politikası, veri güvenliği, kişisel veriler, gizlilik, GigMatch, Türk" 
+        />
+      </Helmet>
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-4">Gizlilik Politikası</h1>
         <p className="mb-4">
-          This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website https://gigmatch.io, and use our services.
+          Bu Gizlilik Politikası, web sitemiz https://gigmatch.io’u ziyaret ettiğinizde ve hizmetlerimizi kullandığınızda bilgilerinizin nasıl toplandığını, kullanıldığını, ifşa edildiğini ve korunduğunu açıklar.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">1. Information We Collect</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">1. Topladığımız Bilgiler</h2>
         <p className="mb-4">
-          We may collect personal data that you voluntarily provide to us, including your name, email address, and other contact information when you register or use our services.
+          Kayıt olurken veya hizmetlerimizi kullanırken gönüllü olarak bize sağladığınız isim, e-posta adresi ve diğer iletişim bilgileri gibi kişisel verileri toplayabiliriz.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">2. How We Use Your Information</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">2. Bilgilerinizi Nasıl Kullanıyoruz</h2>
         <p className="mb-4">
-          We use the information we collect to:
+          Topladığımız bilgileri şu amaçlarla kullanıyoruz:
           <ul className="list-disc list-inside mt-2">
-            <li>Provide, operate, and maintain our website</li>
-            <li>Improve your experience with our services</li>
-            <li>Communicate with you, including for customer service and support</li>
-            <li>Send you updates, marketing materials, and other information</li>
+            <li>Web sitemizi sağlamak, işletmek ve sürdürmek</li>
+            <li>Hizmetlerimizde deneyiminizi geliştirmek</li>
+            <li>Müşteri hizmetleri ve destek için sizinle iletişim kurmak</li>
+            <li>Güncellemeler, pazarlama malzemeleri ve diğer bilgilendirici içerikleri size göndermek</li>
           </ul>
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">3. Disclosure of Your Information</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">3. Bilgilerinizin Paylaşılması</h2>
         <p className="mb-4">
-          We may share your information with trusted third-party service providers who assist us in operating our website and conducting our business. We do not sell your personal information to third parties.
+          Web sitemizi işletmemize yardımcı olan güvenilir üçüncü taraf hizmet sağlayıcılarla bilgilerinizi paylaşabiliriz. Kişisel bilgilerinizi üçüncü şahıslara satmıyoruz.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">4. Cookies and Tracking Technologies</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">4. Çerezler ve İzleme Teknolojileri</h2>
         <p className="mb-4">
-          We use cookies and similar tracking technologies to track and analyze usage and trends for our service. You can manage your cookie settings through your browser.
+          Hizmetimizin kullanım eğilimlerini ve trendlerini analiz etmek amacıyla çerezler ve benzeri izleme teknolojilerini kullanıyoruz. Tarayıcınız üzerinden çerez ayarlarınızı yönetebilirsiniz.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">5. Security of Your Information</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">5. Bilgilerinizin Güvenliği</h2>
         <p className="mb-4">
-          We follow industry-standard protocols to protect the security of your personal information and ensure that it is treated securely and in accordance with this Privacy Policy.
+          Kişisel bilgilerinizin güvenliğini sağlamak için sektör standartlarına uygun protokoller uyguluyor ve bilgilerinizin bu Gizlilik Politikası doğrultusunda korunmasını temin ediyoruz.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">6. Your Rights</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">6. Haklarınız</h2>
         <p className="mb-4">
-          Depending on your location, you have rights that may include accessing, correcting, or deleting your personal information. If you wish to exercise these rights, please contact us.
+          Konumunuza bağlı olarak, kişisel bilgilerinize erişme, bilgileri düzeltme veya silme gibi haklara sahip olabilirsiniz. Bu haklarınızı kullanmak isterseniz bizimle iletişime geçiniz.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">7. Changes to This Privacy Policy</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">7. Bu Gizlilik Politikasındaki Değişiklikler</h2>
         <p className="mb-4">
-          We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page with an updated effective date.
+          Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikleri, geçerli tarihi güncelleyerek bu sayfada yayınlayarak bildiririz.
         </p>
 
-        <h2 className="text-2xl font-bold mt-6 mb-2">8. Contact Us</h2>
+        <h2 className="text-2xl font-bold mt-6 mb-2">8. Bizimle İletişim</h2>
         <p className="mb-4">
-          If you have any questions about this Privacy Policy, please contact us at support@gigmatch.io.
+          Bu Gizlilik Politikası ile ilgili sorularınız varsa lütfen support@gigmatch.io adresinden bizimle iletişime geçiniz.
         </p>
 
         <p className="mt-8 text-sm text-gray-400">
-          Last updated: [21.02.2025]
+          Son güncelleme: [21.02.2025]
         </p>
       </div>
     </div>

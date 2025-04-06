@@ -12,7 +12,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GoogleOAuthProvider
       clientId="291328943108-8146tgvmau8q58bbvrdk5msvofd0uua7.apps.googleusercontent.com"
-      clientsecret="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"
       scriptStrategy="onload"
       initOptions={{
         ux_mode: "popup",  // Ensure popup UX mode

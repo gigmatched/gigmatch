@@ -4,19 +4,19 @@ const bcrypt = require('bcrypt');
 const UserSchema = new mongoose.Schema({
   fullname: { 
     type: String, 
-    required: function() { return this.role !== 'fan'; } // Only required for artists/organizers
+    required: function() { return this.role !== 'fan'; } // Required for all except fans
   },
   email: { type: String, required: true, unique: true },
   password: { 
     type: String, 
-    required: function() { return this.role !== 'fan'; } // No password required for fans
+    required: function() { return this.role !== 'fan'; } // Required for non-fans (including admin)
   },
   role: { 
     type: String, 
-    enum: ['artist', 'organizer', 'fan'],
+    enum: ['artist', 'organizer', 'fan', 'admin'], // admin added here
     required: true 
   },
-  // Fields valid only for artists/organizers:
+  // Fields valid only for artists/organizers (and optionally admins if applicable):
   genre: [{
     type: String,
     enum: ['rock', 'rnb/hiphop', 'rap', 'yöresel', 'tekno', 'house', 'electronic', 'pop', 'klasik', 'caz', 'indie', 'soul', 'alternatif']
@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['cover', 'orijinal', 'mix', 'vokalist', 'grup', 'dj', 'enstrümantalist']
   }],
-  minFee: { type: Number }, // minimum ücret
+  minFee: { type: Number }, // minimum fee
   availability: [{
     date: { type: Date, required: true },
     start: { type: String, required: true },
@@ -35,14 +35,14 @@ const UserSchema = new mongoose.Schema({
   wantsEmails: { type: Boolean, default: true },
   emailType: { 
     type: String, 
-    enum: ['artist', 'organizer', 'fan'],
+    enum: ['artist', 'organizer', 'fan', 'admin'], // admin added here, if needed
     // Require emailType for non-fans if the user wants emails.
     required: function() { return this.wantsEmails && this.role !== 'fan'; },
-    // Default based on role:
     default: function() {
       if (this.role === 'fan') return 'fan';
       if (this.role === 'artist') return 'artist';
       if (this.role === 'organizer') return 'organizer';
+      if (this.role === 'admin') return 'admin';
       return undefined;
     }
   },
@@ -57,7 +57,7 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-// Allow passwordless matching for fans
+// Allow passwordless matching for fans, normal for others.
 UserSchema.methods.matchPassword = async function (enteredPassword) {
   if (this.role === 'fan') return true;
   return await bcrypt.compare(enteredPassword, this.password);

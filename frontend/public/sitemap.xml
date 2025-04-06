@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Turkish Homepage -->
+  <url>
+    <loc>https://gigmatch.io/</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- English Homepage -->
+  <url>
+    <loc>https://gigmatch.io/en/</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Turkish Login Page -->
+  <url>
+    <loc>https://gigmatch.io/giris</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- English Login Page -->
+  <url>
+    <loc>https://gigmatch.io/en/login</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Turkish Register Page -->
+  <url>
+    <loc>https://gigmatch.io/kayitol</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- English Register Page -->
+  <url>
+    <loc>https://gigmatch.io/en/register</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Turkish Privacy Policy Page -->
+  <url>
+    <loc>https://gigmatch.io/gizlilik</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- English Privacy Policy Page -->
+  <url>
+    <loc>https://gigmatch.io/en/privacy</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- Turkish Our Story Page -->
+  <url>
+    <loc>https://gigmatch.io/hikayemiz</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- English Our Story Page -->
+  <url>
+    <loc>https://gigmatch.io/en/ourstory</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Turkish Contact Page -->
+  <url>
+    <loc>https://gigmatch.io/iletisim</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- English Contact Page -->
+  <url>
+    <loc>https://gigmatch.io/en/contact</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- You can add additional pages (e.g., Blog, Gigs) for both languages as needed -->
+</urlset>
