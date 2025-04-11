@@ -2,6 +2,39 @@ const Blog = require('../models/Blog');
 const Comment = require('../models/Comment');
 const mongoose = require('mongoose');
 
+exports.getBlogById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Validate ObjectId before attempting a lookup
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid blog ID'
+      });
+    }
+
+    const blog = await Blog.findById(id).populate('author', 'fullname email');
+    
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: 'Blog post not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: blog
+    });
+  } catch (error) {
+    console.error('Error fetching blog by ID:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error while fetching blog post'
+    });
+  }
+};
+
 // Get all published blog posts with pagination
 exports.getPublishedBlogs = async (req, res) => {
   try {
@@ -21,7 +54,7 @@ exports.getPublishedBlogs = async (req, res) => {
       .sort({ publishedAt: -1 })
       .skip(skip)
       .limit(limit)
-      .populate('author', 'fullname')
+      .populate('author', 'fullname email')
       .select('-content'); // Exclude content for list view
 
     // Get total count for pagination
@@ -55,7 +88,7 @@ exports.getBlogBySlug = async (req, res) => {
       slug, 
       status: 'published' 
     })
-    .populate('author', 'fullname')
+    .populate('author', 'fullname email')
     .populate({
       path: 'comments',
       match: { status: 'approved', parentComment: null },
@@ -102,7 +135,7 @@ exports.getFeaturedBlogs = async (req, res) => {
     })
       .sort({ publishedAt: -1 })
       .limit(limit)
-      .populate('author', 'fullname');
+      .populate('author', 'fullname email');
     
     res.status(200).json({
       success: true,
@@ -160,7 +193,7 @@ exports.getBlogsByCategory = async (req, res) => {
     .sort({ publishedAt: -1 })
     .skip(skip)
     .limit(limit)
-    .populate('author', 'fullname')
+    .populate('author', 'fullname email')
     .select('-content');
     
     const total = await Blog.countDocuments({ 
@@ -363,7 +396,7 @@ exports.getAllBlogs = async (req, res) => {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
-      .populate('author', 'fullname');
+      .populate('author', 'fullname email');
     
     const total = await Blog.countDocuments();
     
@@ -399,7 +432,7 @@ exports.getBlogById = async (req, res) => {
     }
     
     const blog = await Blog.findById(id)
-      .populate('author', 'fullname');
+      .populate('author', 'fullname email');
     
     if (!blog) {
       return res.status(404).json({

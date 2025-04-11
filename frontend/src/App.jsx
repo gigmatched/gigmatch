@@ -1,6 +1,7 @@
+// File: frontend/src/App.jsx
 import React from 'react';
 import './index.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AuthProvider from './contexts/AuthProvider';
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
@@ -37,23 +38,63 @@ function App({ children }) {
             <main className="flex-grow">
               <div className="container mx-auto p-4">
                 <Routes>
+                  {/* Turkish Routes */}
                   <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/privacy" element={<Privacy />} />
+                  <Route path="/giris" element={<Login />} />
+                  <Route path="/kayitol" element={<Register />} />
+                  <Route path="/gizlilik" element={<Privacy />} />
+                  <Route path="/hikayemiz" element={<OurStory />} />
+                  <Route path="/iletisim" element={<Contact />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:slug" element={<BlogDetail />} />
                   <Route
-                    path="/profile"
+                    path="/profil"
                     element={
                       <ProtectedRoute>
                         <Profile />
                       </ProtectedRoute>
                     }
                   />
-                  {/* Public Blog Routes */}
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:slug" element={<BlogDetail />} />
+                  <Route path="/gigler" element={<Gigs />} />
+                  <Route path="/gigler/:id" element={<GigDetails />} />
+                  <Route
+                    path="/gig-olustur"
+                    element={
+                      <ProtectedRoute>
+                        <CreateGig />
+                      </ProtectedRoute>
+                    }
+                  />
                   
-                  {/* Admin Blog Routes */}
+                  {/* English Routes */}
+                  <Route path="/en" element={<Home />} />
+                  <Route path="/en/login" element={<Login />} />
+                  <Route path="/en/register" element={<Register />} />
+                  <Route path="/en/privacy" element={<Privacy />} />
+                  <Route path="/en/ourstory" element={<OurStory />} />
+                  <Route path="/en/contact" element={<Contact />} />
+                  <Route path="/en/blog" element={<Blog />} />
+                  <Route path="/en/blog/:slug" element={<BlogDetail />} />
+                  <Route
+                    path="/en/profile"
+                    element={
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="/en/gigs" element={<Gigs />} />
+                  <Route path="/en/gigs/:id" element={<GigDetails />} />
+                  <Route
+                    path="/en/create-gig"
+                    element={
+                      <ProtectedRoute>
+                        <CreateGig />
+                      </ProtectedRoute>
+                    }
+                  />
+                  
+                  {/* Admin Blog Routes - No language prefix needed as these are admin-only */}
                   <Route
                     path="/admin/blog"
                     element={
@@ -79,20 +120,17 @@ function App({ children }) {
                     }
                   />
                   
-                  <Route path="/ourstory" element={<OurStory />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/gigs" element={<Gigs />} />
-                  <Route path="/gigs/:id" element={<GigDetails />} />
-                  <Route
-                    path="/create-gig"
-                    element={
-                      <ProtectedRoute>
-                        <CreateGig />
-                      </ProtectedRoute>
-                    }
-                  />
                   <Route path="/underconstruction" element={<UnderConstruction />} />
-                  {/* Other routes can be added here */}
+                  
+                  {/* Legacy routes - redirect to new paths */}
+                  <Route path="/login" element={<Navigate to="/giris" replace />} />
+                  <Route path="/register" element={<Navigate to="/kayitol" replace />} />
+                  <Route path="/privacy" element={<Navigate to="/gizlilik" replace />} />
+                  <Route path="/ourstory" element={<Navigate to="/hikayemiz" replace />} />
+                  <Route path="/contact" element={<Navigate to="/iletisim" replace />} />
+                  <Route path="/profile" element={<Navigate to="/profil" replace />} />
+                  <Route path="/gigs" element={<Navigate to="/gigler" replace />} />
+                  <Route path="/create-gig" element={<Navigate to="/gig-olustur" replace />} />
                 </Routes>
               </div>
             </main>

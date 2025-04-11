@@ -1,8 +1,16 @@
 const express = require('express');
+const cors = require('cors');  // CORS kütüphanesini dahil et
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
+
+// CORS Middleware
+app.use(cors({
+  origin: 'https://gigmatch.io', // Frontend adresiniz
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // İzin verilen HTTP metodları
+  allowedHeaders: ['Content-Type', 'Authorization'] // İzin verilen başlıklar
+}));
 
 // Import API routes
 const googleAuthRoutes = require('./routes/googleAuth');
